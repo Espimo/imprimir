@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Data & Automation Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            font-size: 12px;
+        }
+
+        .cv-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .cv-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #090979, #ff006e);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px 30px;
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .objective {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            opacity: 0.95;
+            max-width: 100%;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+            min-height: auto;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 20px 18px;
+            border-right: 2px solid #e9ecef;
+            page-break-inside: avoid;
+        }
+
+        .content {
+            padding: 25px;
+            page-break-inside: avoid;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 18px;
+            background: linear-gradient(135deg, #00d4ff, #090979);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+
+        .skill-category h4 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            border: 1px solid #90caf9;
+            white-space: nowrap;
+        }
+
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .soft-skill {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 15px;
+            page-break-inside: avoid;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(135deg, #00d4ff, #090979);
+            border-radius: 2px;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            color: #1e3c72;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .company-period {
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+
+        .achievement {
+            margin-bottom: 8px;
+            padding-left: 12px;
+            position: relative;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .achievement::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 0.6rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 8px;
+            padding: 12px;
+            border-left: 3px solid #00d4ff;
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+        }
+
+        .project-description {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-top: 6px;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #764ba2;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 4px;
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .institution {
+            color: #666;
+            font-style: italic;
+            font-size: 0.7rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #00d4ff, #090979);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .languages {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language-level {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .language-note {
+            font-size: 0.6rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 4px;
+            padding-left: 4px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 15px 0;
+            border-left: 3px solid #2196f3;
+            page-break-inside: avoid;
+        }
+
+        .highlight-title {
+            font-weight: 600;
+            color: #1565c0;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .cert-category {
+            margin-bottom: 15px;
+        }
+
+        .cert-category-title {
+            color: #1e3c72;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cert-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cert-item {
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 2px solid #e9ecef;
+            line-height: 1.2;
+        }
+
+        .cert-item.completed {
+            border-left-color: #00d4ff;
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+        }
+
+        .in-progress {
+            color: #ff6b35;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        /* Estilos específicos para PDF/Impresión */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 10px !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .cv-container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+                width: 100% !important;
+                margin: 0 !important;
+                page-break-inside: avoid !important;
+            }
+
+            .main-content {
+                grid-template-columns: 280px 1fr !important;
+                page-break-inside: avoid !important;
+            }
+
+            .header {
+                page-break-after: avoid !important;
+                padding: 20px 25px !important;
+            }
+
+            .name {
+                font-size: 1.8rem !important;
+            }
+
+            .title {
+                font-size: 0.95rem !important;
+            }
+
+            .objective {
+                font-size: 0.8rem !important;
+            }
+
+            .sidebar {
+                padding: 15px 12px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .content {
+                padding: 20px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+
+            .section {
+                margin-bottom: 18px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .experience-item {
+                margin-bottom: 15px !important;
+                page-break-inside: avoid !important;
+            }
+
+            .achievement {
+                font-size: 0.7rem !important;
+                margin-bottom: 6px !important;
+            }
+
+            .project-card {
+                padding: 8px !important;
+                margin-bottom: 6px !important;
+            }
+
+            .project-description {
+                font-size: 0.65rem !important;
+            }
+
+            .highlight-box {
+                margin: 10px 0 !important;
+                padding: 10px !important;
+            }
+
+            .highlight-box p {
+                font-size: 0.65rem !important;
+            }
+
+            /* Ocultar animaciones en PDF */
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Estilos específicos para navegadores webkit (Chrome, Safari) al generar PDF */
+        @page {
+            size: A4;
+            margin: 0.5cm;
+        }
+
+        /* Fallback para emojis en PDF */
+        .emoji-fallback {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Cristhian Espinosa</h1>
+                <h2 class="title">Data Analyst | Automation Specialist | Solutions Engineer</h2>
+                <p class="objective">
+                    Profesional proactivo y estratégico con enfoque analítico para resolver problemas complejos y anticipar riesgos. 
+                    Especializado en automatización de procesos, análisis de datos y soluciones tecnológicas que generan valor tangible 
+                    desde el primer día. Reconocido por mi ambición, capacidad de aprendizaje acelerado y alto compromiso con el logro de objetivos.
+                </p>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h3 class="section-title">📞 Contacto</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon" data-icon="@">📧</div>
+                            <span><a href="mailto:crisespimo@gmail.com" style="color:#333;text-decoration:none;font-weight:bold;">crisespimo@gmail.com</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" data-icon="T">📱</div>
+                            <span><a href="tel:+34671993311" style="color:#333;text-decoration:none;font-weight:bold;">+34 671 993 311</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" data-icon="L">📍</div>
+                            <span>Madrid, España</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" data-icon="Li">💼</div>
+                            <span><a href="https://www.linkedin.com/in/cristhianespinosa/" target="_blank" style="color:#333;text-decoration:none;font-weight:bold;">in/cristhianespinosa/</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" data-icon="W">🌐</div>
+                            <span><a href="https://espimo.github.io/portfolio/" target="_blank" style="color:#333;text-decoration:none;font-weight:bold;">espimo.github.io/portfolio/</a></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">🛠️ Hard Skills</h3>
+                    
+                    <div class="skill-category">
+                        <h4>Automatización</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">n8n</span>
+                            <span class="skill-tag">Make/Zapier</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Data & BI</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Tableau</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Cloud & Databases</h4>
+                        <div class="skills-list">
+                            <span class="skill-tag">Google Cloud</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MS SQL Server</span>
+                            <span class="skill-tag">Supabase</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">💡 Soft Skills</h3>
+                    <div class="soft-skills">
+                        <div class="soft-skill">Proactividad</div>
+                        <div class="soft-skill">Pensamiento Estratégico</div>
+                        <div class="soft-skill">Orientación a Resultados</div>
+                        <div class="soft-skill">Adaptabilidad</div>
+                        <div class="soft-skill">Resiliencia</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">🎓 Formación</h3>
+                    
+                    <div class="education-item">
+                        <div class="degree">Máster en Big Data y Ciencia de Datos</div>
+                        <div class="institution">Universidad Internacional de Valencia (VIU)</div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="degree">Grado en Ingeniería en Organización Industrial</div>
+                        <div class="institution">Universidad Internacional de La Rioja (UNIR)</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">📜 Certificaciones</h3>
+                    
+                    <div class="cert-category">
+                        <h4 class="cert-category-title">🤖 Automatización & AI</h4>
+                        <div class="cert-items">
+                            <div class="cert-item completed">IT Automation - Google</div>
+                            <div class="cert-item">Agentes Inteligentes en n8n con DeepSeek <span class="in-progress">(En curso)</span></div>
+                            <div class="cert-item">Generative AI for Data Analysis <span class="in-progress">(En curso)</span></div>
+                            <div class="cert-item">RAG & Agentic AI - IBM <span class="in-progress">(En curso)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="cert-category">
+                        <h4 class="cert-category-title">📊 Business Intelligence</h4>
+                        <div class="cert-items">
+                            <div class="cert-item completed">Microsoft Power BI Data Analyst - Microsoft (Coursera)</div>
+                            <div class="cert-item completed">Business Intelligence con Tableau</div>
+                            <div class="cert-item">Business Intelligence con Google <span class="in-progress">(En curso)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="cert-category">
+                        <h4 class="cert-category-title">🎯 Product & Project Management</h4>
+                        <div class="cert-items">
+                            <div class="cert-item completed">Software Product Management - University of Alberta (Coursera)</div>
+                            <div class="cert-item completed">Project Management - Google</div>
+                            <div class="cert-item">AI Product Manager - IBM <span class="in-progress">(En curso)</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">🌐 Idiomas</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span>Español</span>
+                            <span class="language-level">Nativo</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Inglés</span>
+                            <span class="language-level">C1</span>
+                        </div>
+                        <div class="language-note">+3 años viviendo en Londres</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h3 class="section-title">💼 Experiencia Profesional</h3>
+                    
+                    <div class="experience-item">
+                        <h4 class="job-title">Technical Support Software Engineer</h4>
+                        <p class="company-period">Trumpf España | Junio 2021 – Enero 2024 | Madrid</p>
+                        
+                        <div class="achievement">
+                            <strong>Transformación Digital de Sistemas Legacy | Data Migration:</strong> Lideré migración completa de software de diseño 2D a 3D, desarrollando solución custom para incompatibilidades de nomenclatura que salvó el 97% de datos críticos y estableció protocolo técnico adoptado por equipo consultor.
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Arquitectura de Integración Empresarial | ERP Connectivity:</strong> Diseñé integraciones bidireccionales entre software de producción y ERPs corporativos (SAP, Dynamics, Navision), implementando trazabilidad end-to-end de procesos manufactureros y flujos de datos.
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Implementación Smart Factory Cloud | IoT Solutions:</strong> Coordiné proyecto piloto de digitalización logística basada en nube, adaptando arquitectura de producto para workflows semi-automáticos y optimizando eficiencia operacional del cliente.
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Optimización Crítica de Performance | Database Tuning:</strong> Diagnostiqué y resolví cuello de botella en base de datos mediante análisis de queries y ajuste de frecuencia de actualización, desbloqueando venta estratégica de €5M y fortaleciendo relación con cliente.
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <div class="highlight-title">🎯 Otras experiencias profesionales</div>
+                        <p><strong>Encargado - Restaurante (3 años, Londres):</strong> Gestión de equipos en alta presión y resolución de incidencias operativas.<br>
+                        <strong>Profesor STEM (2 años, Cádiz):</strong> Formación en robótica y programación, desarrollo de programas didácticos.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">🚀 Proyectos Destacados</h3>
+                    
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <h4 class="project-title">🍽️ PlannerOps</h4>
+                            <p class="project-description">
+                                Sistema de gestión y comunicación diaria para restaurantes que permite la gestión de posiciones, tareas y KPI así como un perfil histórico de cada trabajador.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vibe Code</span>
+                                <span class="project-tag">Supabase</span>
+                                <span class="project-tag">Solving problem</span>
+                                <span class="project-tag">Management</span>
+                                <span class="project-tag">UX</span>
+                                <span class="project-tag">Workflow</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">⚙️ Email2Task</h4>
+                            <p class="project-description">
+                                Sistema automatizado de gestión y registro de incidencias con asignación a técnicos en función de la carga de trabajo.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">n8n</span>
+                                <span class="project-tag">Google API</span>
+                                <span class="project-tag">Asana-Trello</span>
+                                <span class="project-tag">Supabase</span>
+                                <span class="project-tag">Javascript</span>
+                                <span class="project-tag">JSON</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">🤖 RAG</h4>
+                            <p class="project-description">
+                                Asistente inteligente para consulta documental empresarial con búsqueda semántica y respuestas contextuales.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">n8n</span>
+                                <span class="project-tag">OpenAI API</span>
+                                <span class="project-tag">Embeddings</span>
+                                <span class="project-tag">Database</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">📊 Churn Prediction</h4>
+                            <p class="project-description">
+                                Sistema predictivo de abandono de clientes con modelo explicable y generación automática de estrategias de retención.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Streamlit</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Scikit-learn</span>
+                                <span class="project-tag">GPTs</span>
+                                <span class="project-tag">XGBoost</span>
+                                <span class="project-tag">Estadística</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">💰 Rentabilidad E-commerce</h4>
+                            <p class="project-description">
+                                Dashboard ejecutivo de rentabilidad por cliente con análisis de cohortes y segmentación avanzada para decisiones estratégicas.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Power BI</span>
+                                <span class="project-tag">Tableau</span>
+                                <span class="project-tag">DAX</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">CLV</span>
+                                <span class="project-tag">RFM</span>
+                                <span class="project-tag">ROI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <h4 class="project-title">📈 Marketing Attribution & ROI</h4>
+                            <p class="project-description">
+                                Simulación multicanal de marketing, atribución de conversiones y análisis de ROI, conectando datos con impacto directo de negocio.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Power BI</span>
+                                <span class="project-tag">Tableau</span>
+                                <span class="project-tag">PostgreSQL</span>
+                                <span class="project-tag">CAC</span>
+                                <span class="project-tag">ROI</span>
+                                <span class="project-tag">Customer Journey</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Función para mejorar la compatibilidad con PDF
+        document.addEventListener('DOMContentLoaded', function() {
+            // Eliminar animaciones que pueden causar problemas en PDF
+            if (window.matchMedia && window.matchMedia('print').matches) {
+                // Si está siendo impreso/convertido a PDF, deshabilitar animaciones
+                const style = document.createElement('style');
+                style.textContent = `
+                    *, *::before, *::after {
+                        animation: none !important;
+                        transition: none !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Verificar compatibilidad con emojis y añadir fallbacks si es necesario
+            const testEmoji = document.createElement('span');
+            testEmoji.innerHTML = '📧';
+            testEmoji.style.visibility = 'hidden';
+            testEmoji.style.position = 'absolute';
+            document.body.appendChild(testEmoji);
+            
+            // Si el emoji no se renderiza correctamente, mostrar fallbacks
+            setTimeout(() => {
+                const emojiWidth = testEmoji.offsetWidth;
+                if (emojiWidth < 10) {
+                    // Los emojis no se renderizan bien, mostrar texto alternativo
+                    document.querySelectorAll('.emoji-fallback').forEach(fallback => {
+                        fallback.style.display = 'inline';
+                    });
+                }
+                document.body.removeChild(testEmoji);
+            }, 100);
+
+            // Optimización para impresión
+            window.addEventListener('beforeprint', function() {
+                // Asegurar que todos los colores se mantengan
+                document.querySelectorAll('*').forEach(element => {
+                    element.style.webkitPrintColorAdjust = 'exact';
+                    element.style.colorAdjust = 'exact';
+                    element.style.printColorAdjust = 'exact';
+                });
+            });
+        });
+
+        // Función para mostrar instrucciones de impresión/PDF
+        function showPrintInstructions() {
+            const instructions = `
+Para obtener el mejor resultado al convertir a PDF:
+
+1. **Chrome/Edge (Recomendado):**
+   - Ctrl+P o Cmd+P
+   - Destino: "Guardar como PDF"
+   - Tamaño: A4
+   - Márgenes: Mínimos
+   - Escala: Ajustar a la página
+   - ✅ Marcar "Más opciones" → "Gráficos de fondo"
+
+2. **Firefox:**
+   - Ctrl+P o Cmd+P
+   - ✅ Activar "Imprimir fondos"
+   - Orientación: Vertical
+   - Escala: Ajustar al ancho de página
+
+3. **Herramientas online alternativas:**
+   - wkhtmltopdf
+   - Puppeteer
+   - Print-js
+
+¿Quieres ver estas instrucciones?
+            `;
+            
+            if (confirm('¿Necesitas ayuda para convertir a PDF manteniendo el diseño?')) {
+                alert(instructions);
+            }
+        }
+
+        // Añadir botón de ayuda (opcional, puedes comentarlo si no lo necesitas)
+        // showPrintInstructions();
+    </script>
+</body>
+</html>
